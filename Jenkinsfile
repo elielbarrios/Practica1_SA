@@ -11,11 +11,6 @@ pipeline {
         sh 'cd appweb && npm i'
       }
     }
-    stage('Build') {
-      steps {
-        sh 'git checkout origin/master'
-      }
-    }
     stage('Run tests') {
       steps {
         sh 'ng test'  
