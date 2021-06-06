@@ -22,7 +22,7 @@ pipeline {
       }
     }
     stage('Deploy') {
-      steps {
+      steps {  
         sh 'git merge origin/develop'
       }
     }
