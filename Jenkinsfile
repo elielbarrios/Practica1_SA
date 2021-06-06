@@ -9,7 +9,7 @@ pipeline {
     }
     stage('Run tests') {
       steps {
-        sh 'cd appweb && ng test'  
+        sh 'cd appweb && ng test'   
       }
     }
     stage('Deploy') {
