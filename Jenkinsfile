@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Instalar dependencias') {
       steps {
-        sh 'npm i'
+        sh 'cd appweb && npm i'
       }
     }
     stage('Build') {
