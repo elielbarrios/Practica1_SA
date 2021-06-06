@@ -1,11 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Mover al folder del proyecto') {
-      steps {
-        sh 'cd appweb'
-      }
-    }
+    
     stage('Instalar dependencias') {
       steps {
         sh 'cd appweb && npm i'
@@ -13,7 +9,7 @@ pipeline {
     }
     stage('Run tests') {
       steps {
-        sh 'ng test'  
+        sh 'cd appweb && ng test'  
       }
     }
     stage('Deploy') {
