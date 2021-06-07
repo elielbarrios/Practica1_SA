@@ -4,17 +4,17 @@ pipeline {
     
     stage('Instalar dependencias') {
       steps {
-        sh 'cd appweb && npm i'
+        sh 'cd apip1 && npm i'
       }
     }
     stage('Run tests') {
       steps {
-        sh 'cd appweb && ng test'   
+        sh 'cd apip1 && npm run test'   
       }
     }
     stage('Deploy') {
       steps {  
-        sh 'git merge origin/develop'
+        sh 'cd apip1 && node index.js'
       }
     }
   }
