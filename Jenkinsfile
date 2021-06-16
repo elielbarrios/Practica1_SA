@@ -3,12 +3,12 @@ pipeline {
   stages {
     stage('Install Dependences') {
       steps {
-        sh 'npm i -D'
+        sh 'cd Webapp && npm i -D'
       }
     }
     stage('Run unit tests mocha/chai') {
       steps {
-        sh 'npm test'
+        sh 'cd Webapp &&  npm test'
       }
     } 
     stage('Status git') {
@@ -16,11 +16,16 @@ pipeline {
         sh 'git status'
       }
     } 
-    /*stage('Deploy and Merge') {
+    stage('Deploy ansible frontend') {
       steps {
-        sh 'git checkout origin/master && git merge origin/develop && git push origin master'
+        ansiblePlaybook credentialsId: 'ansiblejenkins', disableHostKeyChecking: true, installation: 'ansible2', inventory: 'inventario.inv', playbook: 'front.yml'
       }
-    }*/
+    }
+    stage('Deploy ansible backend') {
+      steps {
+        ansiblePlaybook credentialsId: 'ansiblejenkins', disableHostKeyChecking: true, installation: 'ansible2', inventory: 'inventario.inv', playbook: 'back.yml'
+      }
+    }
   
   }
 
