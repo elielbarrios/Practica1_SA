@@ -16,11 +16,20 @@ pipeline {
         sh 'git status'
       }
     } 
-    stage('Deploy and Merge') {
+    /*stage('Deploy and Merge') {
       steps {
         sh 'git checkout origin/master && git merge origin/develop && git push origin master'
       }
-    }
+    }*/
   
   }
+
+  post {
+        success {
+            echo 'Install, Test, Build and Deploy'
+        }
+        failure {
+            echo 'Algo fallo'
+        }
+    }
 }
