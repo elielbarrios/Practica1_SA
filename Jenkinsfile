@@ -1,21 +1,26 @@
 pipeline {
   agent any
   stages {
-    
-    stage('Instalar dependencias') {
+    stage('Install Dependences') {
       steps {
-        sh 'cd apip1 && npm i'
+        sh 'npm i -D'
       }
     }
-    stage('Run tests') {
+    stage('Run unit tests mocha/chai') {
       steps {
-        sh 'cd apip1 && npm run test'   
+        sh 'npm test'
+      }
+    } 
+    stage('Status git') {
+      steps {
+        sh 'git status'
+      }
+    } 
+    stage('Deploy and Merge') {
+      steps {
+        sh 'git checkout origin/master && git merge origin/develop && git push origin master'
       }
     }
-    stage('Deploy') {
-      steps {  
-        sh 'cd apip1 && node index.js'
-      }
-    }
+  
   }
 }

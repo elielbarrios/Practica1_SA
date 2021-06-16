@@ -1,0 +1,16 @@
+{
+  "name": "Minipractica2",
+  "version": "1.0.0",
+  "description": "Minipractica 2 SA - 201603016",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^8.4.0"
+  }
+}
